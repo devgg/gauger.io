@@ -2,12 +2,16 @@ var express = require('express');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var stylus = require('stylus');
+var axis = require('axis');
 
 var config = require('./config.js');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+
+app.locals.foo = config.paths.images;
 
 // view engine setup
 app.set('views', config.paths.views);
@@ -18,8 +22,16 @@ app.use(favicon(config.paths.favicon));
 app.use(logger('dev'));
 app.use(stylus.middleware({
     src: config.paths.views,
-    dest: config.paths.public
+    dest: config.paths.public,
+    compile: compile
 }));
+
+function compile(str, path){
+    return stylus(str)
+        .set('filename', path)
+        .use(axis());
+}
+
 app.use(express.static(config.paths.public));
 
 app.use('/', index);
@@ -52,7 +64,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
-    error: {}
+    error: app.get('env') === 'development' ? err : {}
   });
 });
 
