@@ -16,7 +16,7 @@ block content
                 div(class='left')
                     - var n = 0
                     while n < article.categories.length
-                        a(href= categoryMap.get(article.categories[n].name)) #{article.categories[n].name}
+                        a(href= article.categories[n]) #{categories.get(article.categories[n])}
                         - n++
                 div(class='right')
                     time 9 January 2016

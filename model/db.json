@@ -1,0 +1,73 @@
+{
+  "article": [
+    {
+      "head": "Lorem ipsum dolor sit amet, velit ridens",
+      "text": "Lorem ipsum dolor sit amet, velit ridens labore has ea. Tibique repudiare te mel, eu omittam omnesque posidonium quo. An dolor principes accommodare nam, in nec veniam vocent temporibus. Fabulas patrioque vituperata at sea, nisl sanctus appareat ei cum, vero option recusabo ei mea. No pri utinam delenit, his atqui aliquam no, no his mediocrem expetenda. Alienum temporibus in duo, malorum partiendo per cu.",
+      "categories": [
+        "cpp",
+        "java",
+        "javascript"
+      ],
+      "date": "9 January 2016"
+    },
+    {
+      "head": "Lorem ipsum dolor sit amet, velit ridens labore has ea. Tibique repudiare",
+      "text": "Lorem ipsum dolor sit amet, velit ridens labore has ea. Tibique repudiare te mel, eu omittam omnesque posidonium quo. An dolor principes accommodare nam, in nec veniam vocent temporibus. Fabulas patrioque vituperata at sea, nisl sanctus appareat ei cum, vero option recusabo ei mea. No pri utinam delenit, his atqui aliquam no, no his mediocrem expetenda. Alienum temporibus in duo, malorum partiendo per cu.",
+      "categories": [
+        "cpp",
+        "javascript"
+      ],
+      "date": "9 January 2016"
+    },
+    {
+      "head": "Lorem ipsum dolor sit amet, velit ridens labore has ea. Tibique repudiare",
+      "text": "Lorem ipsum dolor sit amet, velit ridens labore has ea. Tibique repudiare te mel, eu omittam omnesque posidonium quo. An dolor principes accommodare nam, in nec veniam vocent temporibus. Fabulas patrioque vituperata at sea, nisl sanctus appareat ei cum, vero option recusabo ei mea. No pri utinam delenit, his atqui aliquam no, no his mediocrem expetenda. Alienum temporibus in duo, malorum partiendo per cu.",
+      "categories": [
+        "cpp",
+        "javascript"
+      ],
+      "date": "9 January 2016"
+    },
+    {
+      "head": "Lorem ipsum dolor sit amet, velit ridens labore has ea. Tibique repudiare",
+      "text": "Lorem ipsum dolor sit amet, velit ridens labore has ea. Tibique repudiare te mel, eu omittam omnesque posidonium quo. An dolor principes accommodare nam, in nec veniam vocent temporibus. Fabulas patrioque vituperata at sea, nisl sanctus appareat ei cum, vero option recusabo ei mea. No pri utinam delenit, his atqui aliquam no, no his mediocrem expetenda. Alienum temporibus in duo, malorum partiendo per cu.",
+      "categories": [
+        "cpp",
+        "javascript"
+      ],
+      "date": "9 January 2016"
+    },
+    {
+      "head": "Lorem ipsum dolor sit amet, velit ridens labore has ea. Tibique repudiare",
+      "text": "Lorem ipsum dolor sit amet, velit ridens labore has ea. Tibique repudiare te mel, eu omittam omnesque posidonium quo. An dolor principes accommodare nam, in nec veniam vocent temporibus. Fabulas patrioque vituperata at sea, nisl sanctus appareat ei cum, vero option recusabo ei mea. No pri utinam delenit, his atqui aliquam no, no his mediocrem expetenda. Alienum temporibus in duo, malorum partiendo per cu.",
+      "categories": [
+        "cpp",
+        "javascript"
+      ],
+      "date": "9 January 2016"
+    },
+    {
+      "head": "Lorem ipsum dolor sit amet, velit ridens labore has ea. Tibique repudiare",
+      "text": "Lorem ipsum dolor sit amet, velit ridens labore has ea. Tibique repudiare te mel, eu omittam omnesque posidonium quo. An dolor principes accommodare nam, in nec veniam vocent temporibus. Fabulas patrioque vituperata at sea, nisl sanctus appareat ei cum, vero option recusabo ei mea. No pri utinam delenit, his atqui aliquam no, no his mediocrem expetenda. Alienum temporibus in duo, malorum partiendo per cu.",
+      "categories": [
+        "cpp",
+        "javascript"
+      ],
+      "date": "9 January 2016"
+    }
+  ],
+  "category": [
+    {
+      "simpleName": "cpp",
+      "displayName": "C++"
+    },
+    {
+      "simpleName": "java",
+      "displayName": "Java"
+    },
+    {
+      "simpleName": "javascript",
+      "displayName": "JavaScript"
+    }
+  ]
+}
