@@ -1,20 +1,29 @@
 extends layout
 
-
-
 block content
+    header
+        | Florian Gauger
+        div(class='header_subtext')
+            | Software Engineer
+    div(id='header_image')
+
+
     each article in articles
         div(class= 'article')
-            h1= article.head
-            p= article.text
-
-            div(class='test')
+            h1(class='article_head')= article.head
+            p(class='article_text')= article.text
+            div(class='article_footer')
                 div(class='left')
-                    | in categories C++, Java, JavaScript
+                    - var n = 0
+                    while n < article.categories.length
+                        a(href= categoryMap.get(article.categories[n].name)) #{article.categories[n].name}
+                        - n++
                 div(class='right')
                     time 9 January 2016
             div(style='clear:both')
 
+    footer
+        button(class='button' onclick='window.open("next", "_self")') next
         //a(href='www.something.com')
             img(src='images/test.png')
 
