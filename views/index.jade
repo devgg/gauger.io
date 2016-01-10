@@ -5,6 +5,7 @@ block content
         | Florian Gauger
         div(class='header_subtext')
             | Software Engineer
+            | #{page}
     div(id='header_image')
 
 
@@ -23,7 +24,8 @@ block content
             div(style='clear:both')
 
     footer
-        button(class='button' onclick='window.open("next", "_self")') next
+        if showButtonNext
+            button(class='button' onclick='window.open(#{page} + 1, "_self")') next
         //a(href='www.something.com')
             img(src='images/test.png')
 
