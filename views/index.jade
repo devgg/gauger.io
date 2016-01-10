@@ -5,8 +5,7 @@ block content
         | Florian Gauger
         div(class='header_subtext')
             | Software Engineer
-            | #{page}
-    div(id='header_image')
+    div(class='image')
 
 
     each article in articles
@@ -23,9 +22,15 @@ block content
                     time 9 January 2016
             div(style='clear:both')
 
+    div(class='image')
     footer
-        if showButtonNext
-            button(class='button' onclick='window.open(#{page} + 1, "_self")') next
-        //a(href='www.something.com')
-            img(src='images/test.png')
+        nav
+            span(id= 'page')
+                | #{page} of #{pageMax}
+            div(id= 'button_box_right')
+                if showButtonNext
+                    button(class='button' onclick='window.open(#{page} + 1, "_self")') next
+            div(id= 'button_box_left')
+                if showButtonPrevious
+                    button(class='button' onclick='window.open(#{page} - 1, "_self")') previous
 

@@ -1,10 +1,32 @@
 footer
   @extend .content
-  padding 50px 0 100px 0
+  padding 50px 0 70px 0
+  text-align center
+  color grey
+
+
+#page
+  height 40px
+  line-height: 40px;
+
+button_width = 120px
+
+.button_box
+  width button_width
+  height 35px
+
+#button_box_left
+  @extend .button_box
+  float left
+
+#button_box_right
+  @extend .button_box
+  float right
+
 
 .button
   background none
-  float right
+  width button_width
   -webkit-border-radius 6;
   -moz-border-radius 6;
   border-radius 6px;
