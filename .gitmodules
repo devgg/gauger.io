@@ -1,0 +1,3 @@
+[submodule "public/subpages/bibsbn"]
+	path = public/subpages/bibsbn
+	url = https://github.com/devgg/bibsbn.git
