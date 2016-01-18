@@ -6,6 +6,7 @@ block content
         div(class='header_subtext')
             | Software Engineer
     div(class='image')
+        | &ltblog&gt
 
 
     each article in articles
@@ -22,15 +23,16 @@ block content
                     time 9 January 2016
             div(style='clear:both')
 
-    div(class='image')
+
     footer
         nav
             span(id= 'page')
                 | #{page} of #{pageMax}
             div(id= 'button_box_right')
                 if showButtonNext
-                    button(class='button' onclick='window.open(#{page} + 1, "_self")') next
+                    button(class='button' onclick='window.open("/blog/" + (#{page} + 1), "_self")') next
             div(id= 'button_box_left')
                 if showButtonPrevious
-                    button(class='button' onclick='window.open(#{page} - 1, "_self")') previous
-
+                    button(class='button' onclick='window.open("/blog/" + (#{page} - 1), "_self")') previous
+    div(class='image')
+        | &lt/blog&gt

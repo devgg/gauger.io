@@ -31,10 +31,14 @@ function calculateSiteConfiguration(page, articlesPerPage, filter) {
     }
 }
 
-router.get(['/', '/:page(\\b\\B|\\d*)'] , function(req, res, next) {
+router.get(['/blog/', '/blog/:page(\\b\\B|\\d*)'] , function(req, res, next) {
     var siteConfiguration = calculateSiteConfiguration(req.params.page, 10);
     siteConfiguration.title = 'Florian Gauger';
     res.render('index', siteConfiguration);
+});
+
+router.get('/bibsbn', function(req, res, next) {
+    res.render('../subpages/bibsbn/views/index');
 });
 
 module.exports = router;

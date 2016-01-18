@@ -20,19 +20,33 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 app.use(favicon(config.paths.favicon));
 app.use(logger('dev'));
+
+
+
 app.use(stylus.middleware({
     src: config.paths.views,
     dest: config.paths.public,
     compile: compile
 }));
 
+app.use(stylus.middleware({
+    src: config.paths.subpages + '/bibsbn/views',
+    dest: config.paths.subpages + '/bibsbn/public',
+    compile: compile
+}));
+
+app.use(express.static(config.paths.public));
+app.use(express.static(config.paths.subpages + '/bibsbn/public'));
+
 function compile(str, path){
+    console.log(path);
     return stylus(str)
         .set('filename', path)
         .use(axis());
 }
 
-app.use(express.static(config.paths.public));
+
+//app.use(express.static(config.paths.public + '/subpages'));
 
 app.use('/', index);
 app.use('/users', users);

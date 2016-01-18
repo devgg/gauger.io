@@ -7,7 +7,7 @@ footer
 
 #page
   height 40px
-  line-height: 40px;
+  line-height: 45px;
 
 button_width = 120px
 
@@ -23,16 +23,25 @@ button_width = 120px
   @extend .button_box
   float right
 
-
 .button
   background none
   width button_width
   -webkit-border-radius 6;
   -moz-border-radius 6;
   border-radius 6px;
-  color color;
   font-size 20px;
   padding 7px 20px 7px 20px;
-  border solid color 1px;
   cursor pointer
-  hover-glow(#97BF90, 10px)
+  color grey
+  border solid grey 1px;
+  //hover-glow(#97BF90, 10px)
+  //click-shrink()
+  //hover-color: color
+  //hover-color: white true
+
+button:hover
+  color color;
+  border-color color;
+
+button:focus
+  outline 0
