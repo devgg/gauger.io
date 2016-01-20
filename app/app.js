@@ -8,6 +8,12 @@ var config = require('./config.js');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
+
+const lowdb = require('lowdb');
+const gradientsDb = lowdb(__dirname + '/../subpages/bibsbn/model/gradients.json', { storage: require('lowdb/file-sync') })
+const gradients = gradientsDb.read().object;
+var gradientIndex;
+
 var app = express();
 
 
@@ -18,7 +24,7 @@ app.set('views', config.paths.views);
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
-app.use(favicon(config.paths.favicon));
+//app.use(favicon(config.paths.favicon));
 app.use(logger('dev'));
 
 
@@ -32,6 +38,7 @@ app.use(stylus.middleware({
 app.use(stylus.middleware({
     src: config.paths.subpages + '/bibsbn/views',
     dest: config.paths.subpages + '/bibsbn/public',
+    force: true,
     compile: compile
 }));
 
@@ -40,8 +47,11 @@ app.use(express.static(config.paths.subpages + '/bibsbn/public'));
 
 function compile(str, path){
     console.log(path);
+    var gradient = gradients[Math.floor(Math.random() * gradients.length)];
     return stylus(str)
         .set('filename', path)
+        .define('color_gradient_right', new stylus.nodes.Literal(gradient.right))
+        .define('color_gradient_left', new stylus.nodes.Literal(gradient.left))
         .use(axis());
 }
 

@@ -1,11 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
-const lowdb = require('lowdb')('model/db.json', { storage: require('lowdb/file-sync') })
+console.log(__dirname);
+const lowdb = require('lowdb');
+const blogDb = lowdb(__dirname + '/../../model/db.json', { storage: require('lowdb/file-sync') })
 
 
 function calculateSiteConfiguration(page, articlesPerPage, filter) {
-    var db = lowdb.read().object;
+    var db = blogDb.read().object;
     page = page === undefined? 1 : parseInt(page);
     var pageMax = Math.floor(db.article.length / articlesPerPage) + 1;
     if (page == 0) {
