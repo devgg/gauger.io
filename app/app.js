@@ -10,7 +10,7 @@ var users = require('./routes/users');
 
 
 const lowdb = require('lowdb');
-const gradientsDb = lowdb(__dirname + '/../subpages/bibsbn/model/gradients.json', { storage: require('lowdb/file-sync') })
+const gradientsDb = lowdb(config.paths.bibsbn + '/model/gradients.json', { storage: require('lowdb/file-sync') })
 const gradients = gradientsDb.read().object;
 var gradientIndex;
 

@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var config = require('../config.js');
 
 console.log(__dirname);
 const lowdb = require('lowdb');
-const blogDb = lowdb(__dirname + '/../../model/db.json', { storage: require('lowdb/file-sync') })
+const blogDb = lowdb(config.paths.model + '/db.json', { storage: require('lowdb/file-sync') })
 
 
 function calculateSiteConfiguration(page, articlesPerPage, filter) {
@@ -40,7 +41,7 @@ router.get(['/blog/', '/blog/:page(\\b\\B|\\d*)'] , function(req, res, next) {
 });
 
 router.get('/bibsbn', function(req, res, next) {
-    res.render('../subpages/bibsbn/views/index');
+    res.render(config.paths.bibsbn + '/views/index');
 });
 
 module.exports = router;
