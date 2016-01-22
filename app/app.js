@@ -8,6 +8,8 @@ var config = require('./config.js');
 var blog = require('./routes/blog');
 var bibsbn = require('./routes/bibsbn');
 
+var path = require('path');
+
 
 const lowdb = require('lowdb');
 const gradientsDb = lowdb(config.paths.bibsbn + '/model/gradients.json', { storage: require('lowdb/file-sync') })
@@ -23,11 +25,41 @@ app.use('/blog', blog);
 app.use('/bibsbn', bibsbn);
 
 
+function concatPaths() {
+    var p =  '';
+    for (var i = 0; i < arguments.length; i++) {
+        if (Object.prototype.toString.call(arguments[i]) === '[object Array]') {
+            for (var j = 0; j < arguments[i].length; j++) {
+                p = path.join(p, arguments[i][j]);
+            }
+        } else if (typeof arguments[i] === "string") {
+            p = path.join(p, arguments[i]);
+        }
+    }
+    return p;
+}
+
+app.use('/style', stylus.middleware({
+    src: function(path) {
+        var pathParts = path.replace(/\.css$/, '.styl').split('/');
+        if (pathParts[0] === '') {
+            pathParts.shift();
+        }
+        if (pathParts[0] === 'bibsbn') {
+            return concatPaths(config.paths.bibsbn, 'views', 'style', pathParts.slice(1));
+        } else {
+            return concatPaths(config.paths.views, 'style', pathParts);
+        }
+    },
+    dest: concatPaths(config.paths.public, 'style'),
+    force: true,
+    compile: compile
+}));
 //app.use(favicon(config.paths.favicon));
 
 
 
-
+/*
 app.use(stylus.middleware({
     src: config.paths.views,
     dest: config.paths.public,
@@ -39,7 +71,7 @@ app.use(stylus.middleware({
     dest: config.paths.subpages + '/bibsbn/public',
     force: true,
     compile: compile
-}));
+}));*/
 
 app.use(express.static(config.paths.public));
 app.use(express.static(config.paths.subpages + '/bibsbn/public'));
