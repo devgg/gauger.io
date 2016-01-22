@@ -53,37 +53,18 @@ app.use('/style', stylus.middleware({
     },
     dest: concatPaths(config.paths.public, 'style'),
     force: true,
-    compile: compile
+    compile: function(str, path){
+        var gradient = gradients[Math.floor(Math.random() * gradients.length)];
+        return stylus(str)
+            .set('filename', path)
+            .define('color_gradient_right', new stylus.nodes.Literal(gradient.right))
+            .define('color_gradient_left', new stylus.nodes.Literal(gradient.left))
+            .use(axis());
+    }
 }));
-//app.use(favicon(config.paths.favicon));
-
-
-
-/*
-app.use(stylus.middleware({
-    src: config.paths.views,
-    dest: config.paths.public,
-    compile: compile
-}));
-
-app.use(stylus.middleware({
-    src: config.paths.subpages + '/bibsbn/views',
-    dest: config.paths.subpages + '/bibsbn/public',
-    force: true,
-    compile: compile
-}));*/
 
 app.use(express.static(config.paths.public));
 app.use(express.static(config.paths.subpages + '/bibsbn/public'));
-
-function compile(str, path){
-    var gradient = gradients[Math.floor(Math.random() * gradients.length)];
-    return stylus(str)
-        .set('filename', path)
-        .define('color_gradient_right', new stylus.nodes.Literal(gradient.right))
-        .define('color_gradient_left', new stylus.nodes.Literal(gradient.left))
-        .use(axis());
-}
 
 
 
