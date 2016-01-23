@@ -1,1 +1,1 @@
-# gauger.io [![Build Status](https://travis-ci.org/devgg/gauger.io.svg?branch=master)](https://travis-ci.org/devgg/gauger.io)
+# gauger.io [![Build Status](https://travis-ci.org/devgg/gauger.io.svg?branch=master)](https://travis-ci.org/devgg/gauger.io) [![Code Climate](https://codeclimate.com/github/devgg/gauger.io/badges/gpa.svg)](https://codeclimate.com/github/devgg/gauger.io)
