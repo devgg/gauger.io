@@ -17,7 +17,6 @@ const gradients = gradientsDb.read().object;
 
 var app = express();
 
-app.set('views', config.paths.views);
 app.set('view engine', 'jade');
 
 
@@ -25,7 +24,7 @@ app.use('/blog', blog);
 app.use('/bibsbn', bibsbn);
 
 
-function concatPaths() {
+function concatPaths(/* arguments */) {
     var p =  '';
     for (var i = 0; i < arguments.length; i++) {
         if (Object.prototype.toString.call(arguments[i]) === '[object Array]') {
@@ -39,21 +38,14 @@ function concatPaths() {
     return p;
 }
 
-app.use('/style', stylus.middleware({
+
+app.use('/style/bibsbn', stylus.middleware({
     src: function(path) {
-        var pathParts = path.replace(/\.css$/, '.styl').split('/');
-        if (pathParts[0] === '') {
-            pathParts.shift();
-        }
-        if (pathParts[0] === 'bibsbn') {
-            return concatPaths(config.paths.bibsbn, 'views', 'style', pathParts.slice(1));
-        } else {
-            return concatPaths(config.paths.views, 'style', pathParts);
-        }
+        return concatPaths(config.paths.bibsbn, 'views', 'style', path.replace(/\.css$/, '.styl'));
     },
-    dest: concatPaths(config.paths.public, 'style'),
+    dest: concatPaths(config.paths.public, 'style', 'bibsbn'),
     force: true,
-    compile: function(str, path){
+    compile: function(str, path) {
         var gradient = gradients[Math.floor(Math.random() * gradients.length)];
         return stylus(str)
             .set('filename', path)
@@ -63,10 +55,21 @@ app.use('/style', stylus.middleware({
     }
 }));
 
+app.use('/style/blog', stylus.middleware({
+    src: concatPaths(config.paths.blog, 'views', 'style'),
+    dest: concatPaths(config.paths.public, 'style', 'blog'),
+    force: true,
+    compile: function(str, path) {
+        return stylus(str)
+            .set('filename', path)
+            .use(axis());
+    }
+}));
+
 app.use(express.static(config.paths.public));
 app.use(express.static(config.paths.subpages + '/bibsbn/public'));
 
-
+/*
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -98,5 +101,5 @@ app.use(function(err, req, res, next) {
   });
 });
 
-
+*/
 module.exports = app;

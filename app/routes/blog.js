@@ -33,7 +33,7 @@ function calculateSiteConfiguration(page, articlesPerPage, filter) {
 router.get(['/', '/:page(\\b\\B|\\d*)'] , function(req, res, next) {
     var siteConfiguration = calculateSiteConfiguration(req.params.page, 10);
     siteConfiguration.title = 'Florian Gauger';
-    res.render('index', siteConfiguration);
+    res.render(config.paths.blog + '/views/index', siteConfiguration);
 });
 
 module.exports = router;
