@@ -1,0 +1,5 @@
+.DS_Store
+.idea
+*.html
+public/style/*
+public/img/*
