@@ -1,0 +1,33 @@
+palette2_red = #D43F3F
+palette2_green = #6A9A1F
+palette2_blue = #00ACE9
+
+#status_container
+  display flex
+  justify-content space-between
+
+
+.status
+  -webkit-transition all 0.30s ease-in-out
+  -moz-transition all 0.30s ease-in-out
+  -ms-transition all 0.30s ease-in-out
+  -o-transition all 0.30s ease-in-out
+  text-align center
+  border-style solid
+  border-color: white
+  font-size small
+  color white
+  border-radius 0
+  border-width 1px
+  height 26px
+  line-height 26px
+  flex 0.3
+
+.status_loading
+  @extend .status
+  background white
+  color color_gradient_right
+
+
+.status_ready
+  @extend .status
