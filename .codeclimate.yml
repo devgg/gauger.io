@@ -21,12 +21,5 @@ ratings:
   - "**.php"
   - "**.py"
   - "**.rb"
-exclude_paths: []
-
-
-
-
-
-
 exclude_paths:
-- subpages/bibsbn/public/js/lib/**/*
+  - subpages/bibsbn/public/js/lib/**/*
