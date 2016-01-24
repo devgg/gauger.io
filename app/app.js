@@ -12,7 +12,8 @@ var path = require('path');
 
 
 const lowdb = require('lowdb');
-const gradientsDb = lowdb(config.paths.bibsbn + '/model/gradients.json', { storage: require('lowdb/file-sync') })
+const fileSync = require('lowdb/file-sync');
+const gradientsDb = lowdb(config.paths.bibsbn + '/model/gradients.json', { storage: fileSync })
 const gradients = gradientsDb.read().object;
 
 var app = express();

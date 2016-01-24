@@ -65,12 +65,11 @@ function onError(error) {
     // handle specific listen errors with friendly messages
     switch (error.code) {
         case 'EACCES':
-            console.error(bind + ' requires elevated privileges');
+            throw new Error(bind + ' requires elevated privileges');
             process.exit(1);
             break;
         case 'EADDRINUSE':
-            console.error(bind + ' is already in use');
-            process.exit(1);
+            throw new Error(bind + ' is already in use');
             break;
         default:
             throw error;

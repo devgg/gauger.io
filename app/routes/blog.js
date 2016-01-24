@@ -1,12 +1,13 @@
 
-var router = require('express').Router();
-var config = require('../config.js');
-const posts = require('lowdb')(config.paths.blog + '/model/db.json', { storage: require('lowdb/file-sync') }).read().object;
+const router = require('express').Router();
+const config = require('../config.js');
+const fileSync = require('lowdb/file-sync');
+const posts = require('lowdb')(config.paths.blog + '/model/db.json', { storage: fileSync }).read().object;
 
 function calculateSiteConfiguration(page, articlesPerPage, filter) {
-    page = page === undefined? 1 : parseInt(page);
+    page = page === undefined? 1 : parseInt(page, 10);
     var pageMax = Math.floor(posts.article.length / articlesPerPage) + 1;
-    if (page == 0) {
+    if (page === 0) {
         page = 1;
     } else if (page > posts.article.length / articlesPerPage) {
         page = pageMax;
@@ -25,7 +26,7 @@ function calculateSiteConfiguration(page, articlesPerPage, filter) {
         page: page,
         pageMax: pageMax,
         showButtonNext: articleIndexLast < posts.article.length,
-        showButtonPrevious: articleIndexFirst != 0
+        showButtonPrevious: articleIndexFirst !== 0
     }
 }
 
