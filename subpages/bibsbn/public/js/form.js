@@ -8,7 +8,7 @@ define(['jquery', 'bibtex', 'isbn'],
         });
 
         $('#isbn_text').on('keyup change', function(event) {
-            if (event.keyCode == 13) {
+            if (event.keyCode === 13) {
                 executeQuery();
             } else {
                 setCss();

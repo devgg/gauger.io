@@ -64,7 +64,7 @@ define(['jquery'],
         function handleResult(bibtexEntries, position) {
             numberResults++;
             resultEntries[position] = bibtexEntries;
-            if (numberResults == apis.length) {
+            if (numberResults === apis.length) {
                 resultEntries = [].concat.apply([], resultEntries);
                 console.log(resultEntries);
                 console.log(mergeResultArrays());
