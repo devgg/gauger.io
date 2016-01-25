@@ -9,7 +9,7 @@ define(
             var sum = 0;
             for (var i = 0; i < isbn.length; i++) {
                 if (isbn[i].match(/X|[0-9]/) !== null) {
-                    var value = isbn[i] === 'X' ? 10 : parseInt(isbn[i]);
+                    var value = isbn[i] === 'X' ? 10 : parseInt(isbn[i], 10);
                     sum += (10 - i) * value;
                 } else {
                     return false;
@@ -25,7 +25,7 @@ define(
             var sum = 0;
             for (var i = 0; i < isbn.length; i++) {
                 if (isbn[i].match(/[0-9]/) !== null) {
-                    sum += (((i % 2) === 0) ? 1 : 3) * parseInt(isbn[i]);
+                    sum += (((i % 2) === 0) ? 1 : 3) * parseInt(isbn[i], 10);
                 } else {
                     return false;
                 }

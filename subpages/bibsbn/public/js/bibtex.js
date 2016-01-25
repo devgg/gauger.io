@@ -84,7 +84,7 @@ define(['jquery'],
         function objectToBibtex(object) {
             var bibtex = '@book{' + currentIsbn.replace(/\s/g, '') + ',\n';
             for (var property in object) {
-                bibtex += '\t' + property + ' = ' + '{' + object[property] + '},\n';
+                bibtex += '\t' + property + ' = {' + object[property] + '},\n';
             }
             bibtex += '\tisbn = {' + currentIsbn + '}';
             return bibtex + '\n}';
