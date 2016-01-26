@@ -67,8 +67,6 @@ define(['jquery'],
             resultEntries[position] = bibtexEntries;
             if (numberResults === apis.length) {
                 resultEntries = [].concat.apply([], resultEntries);
-                console.log(resultEntries);
-                console.log(mergeResultArrays());
                 result = objectToBibtex(mergeResultArrays());
             }
         }
@@ -123,8 +121,10 @@ define(['jquery'],
                                 bibtexEntries.push(bibtexEntry);
                             }, this);
                         }
-                        $('#status_google').prop('class', 'status_ready');
                         handleResult(bibtexEntries, position);
+                    },
+                    complete: function() {
+                        $('#status_google').prop('class', 'status_ready');
                     }
                 })
             }
@@ -162,8 +162,10 @@ define(['jquery'],
                             callFunctionIfPresent(book, 'publish_date', year);
                             bibtexEntries.push(bibtexEntry);
                         }
-                        $('#status_open_library').prop('class', 'status_ready');
                         handleResult(bibtexEntries, position);
+                    },
+                    complete: function() {
+                        $('#status_open_library').prop('class', 'status_ready');
                     }
                 })
             }
@@ -208,8 +210,10 @@ define(['jquery'],
                                 bibtexEntries.push(bibtexEntry);
                             }, this);
                         }
-                        $('#status_worldcat').prop('class', 'status_ready');
                         handleResult(bibtexEntries, position);
+                    },
+                    complete: function() {
+                        $('#status_worldcat').prop('class', 'status_ready');
                     }
                 })
             }
