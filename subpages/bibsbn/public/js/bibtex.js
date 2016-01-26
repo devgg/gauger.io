@@ -16,6 +16,7 @@ define(['jquery'],
         }
 
         function AjaxSettings(settings) {
+            this.timeout = 5000;
             for (var setting in settings) {
                 if (settings.hasOwnProperty(setting)) {
                     this[setting] = settings[setting];
