@@ -231,7 +231,7 @@ define(['jquery'],
         function executeQuery(isbn) {
             currentIsbn = isbn;
             numberResults = 0;
-            resultEntries = new Array(apis.length);
+            resultEntries = [[], [], []];
             return requestInfo(apis);
         }
 
