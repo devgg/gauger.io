@@ -6,14 +6,6 @@ define(['jquery'],
         var publisherJoinString = ' and ';
 
 
-        function requestInfo(apis) {
-            var deferreds = apis.map(function(api, position) {
-                return $.ajax(api.url(), api.ajaxSettings(position));
-            });
-
-            return $.when.apply($.ajax, deferreds);
-        }
-
         function AjaxSettings(settings) {
             this.timeout = 5000;
             for (var setting in settings) {
@@ -254,9 +246,9 @@ define(['jquery'],
             numberResults = 0;
             resultEntries = [[], [], []];
             var deferreds = apis.map(function(api, position) {
-                api.executeQuery(isbn, position);
+                return api.executeQuery(isbn, position);
             });
-            return requestInfo(apis);
+            return deffereds; //$.when.apply($.ajax, deferreds);
         }
 
         function getResult() {
