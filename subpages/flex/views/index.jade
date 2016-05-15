@@ -54,7 +54,7 @@ html(lang="en")
             #flex-row-align-content.flex-row
                 #flex-container-align-content.flex-container
                     each number in [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1]
-                        div(class="flex-item-align-content item-" + ((number % 5) + 1))
+                        div(class="flex-item-align-content item-" + number)
                 +dropdown("align-content", ["flex-start", "flex-end", "center", "stretch", "space-between", "space-around"], "space-around")
 
 
