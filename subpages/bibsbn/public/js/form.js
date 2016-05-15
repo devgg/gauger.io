@@ -23,6 +23,7 @@ define(['jquery', 'bibtex', 'isbn'],
                 $('#status_google').prop('class', 'status_loading');
                 $('#status_open_library').prop('class', 'status_loading');
                 $('#status_worldcat').prop('class', 'status_loading');
+                // TODO
                 bibtex.executeQuery(isbnText).then(function() {
                     var bibtexText = $('#bibtex_text');
                     bibtexText.val(bibtex.getResult());
