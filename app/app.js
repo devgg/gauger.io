@@ -7,6 +7,7 @@ var config = require('./config.js');
 
 var blog = require('./routes/blog');
 var bibsbn = require('./routes/bibsbn');
+var flex = require('./routes/flex');
 
 var path = require('path');
 
@@ -23,6 +24,7 @@ app.set('view engine', 'jade');
 
 app.use('/blog', blog);
 app.use('/bibsbn', bibsbn);
+app.use('/flex', flex);
 
 
 function concatPaths(/* arguments */) {
@@ -67,8 +69,20 @@ app.use('/style/blog', stylus.middleware({
     }
 }));
 
+app.use('/style/flex', stylus.middleware({
+    src: concatPaths(config.paths.flex, 'views', 'style'),
+    dest: concatPaths(config.paths.public, 'style', 'flex'),
+    force: true,
+    compile: function(str, path) {
+        return stylus(str)
+            .set('filename', path)
+            .use(axis());
+    }
+}));
+
 app.use(express.static(config.paths.public));
 app.use(express.static(config.paths.subpages + '/bibsbn/public'));
+app.use(express.static(config.paths.subpages + '/flex/public'));
 
 /*
 

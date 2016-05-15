@@ -26,16 +26,42 @@ define(['jquery'],
 
         AjaxSettings.prototype = {
             constructor: AjaxSettings,
-            error: function () {
+            ajaxError: function() {
                 numberResults++;
                 console.log('error occured');
             }
         };
 
-        function Api(name, url, ajaxSettings) {
+
+
+        function Api(name, url, ajaxSuccess, ajaxSettings) {
             this.name = name;
             this.url = url;
+            this.ajaxSuccess = ajaxSuccess;
             this.ajaxSettings = ajaxSettings;
+            this.ajaxTimeout = 5000;
+
+        }
+
+        Api.prototype = {
+            constructor: Api,
+            error: function () {
+                numberResults++;
+                console.log('error occured');
+            },
+            executeQuery: function(isbn) {
+                var settings = {
+                    success: this.ajaxSuccess,
+                    error: this.ajaxError,
+                    timeout: this.ajaxTimeout
+                };
+                for (var property in this.ajaxSettings) {
+                    if (ajaxSettings.hasOwnProperty(property)) {
+                        settings[property] = this.ajaxSettings[property];
+                    }
+                }
+                return $.ajax(this.url(isbn), settings);
+            }
         }
 
         function join(array, joinString, targetProperty) {

@@ -1,0 +1,110 @@
+mixin dropdown(propertyName, propertyValues, defaultValue)
+    .dropdown(data-propertyName=propertyName)
+        .dropdown-label
+            | #{propertyName}:
+        .dropdown-container
+            .dropdown-button
+                |  #{defaultValue};
+            .dropdown-content(class=propertyName)
+                each propertyValue in propertyValues
+                    .dropdown-item(data-propertyValue=propertyValue)
+                        | #{propertyValue}
+
+
+
+doctype html
+html(lang="en")
+    head
+        - var title = "Flexbox Demo"
+        title #{title}
+        link(rel='stylesheet', href='/style/flex/main.css')
+        script(src="https://use.fontawesome.com/1aa05e6020.js")
+        script(src='/js/lib/jquery.js')
+        script(src='/js/flex.js')
+
+    body
+        h1
+            | Interactive flexbox demo
+        #main
+            #flex-row-direction.flex-row
+                #flex-container-direction.flex-container
+                    each number in [1, 2, 3, 4, 5]
+                        div(class="flex-item-direction item-" + number)
+                +dropdown("flex-direction", ["row", "row-reverse", "column", "column-reverse"], "row")
+            #flex-row-justify.flex-row
+                #flex-container-justify.flex-container
+                    each number in [1, 2, 3, 4, 5]
+                        div(class="flex-item-justify item-" + number)
+                +dropdown("flex-justify", ["flex-start", "flex-end", "center", "space-between", "space-around"], "space-around")
+            #flex-row-align-items.flex-row
+                #flex-container-align-items.flex-container
+                    each number in [1, 2, 3, 4, 5]
+                        div(class="flex-item-align-items item-" + number)
+                +dropdown("align-items", ["flex-start", "flex-end", "center", "baseline", "stretch"], "center")
+            #flex-row-wrap.flex-row
+                #flex-container-wrap.flex-container
+                    each number in [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2]
+                        div(class="flex-item-wrap item-" + number, data-number=number)
+                #change-item-number-container
+                    #add-item.change-item-number
+                        i(class="fa fa-plus" aria-hidden="true")
+                    #remove-item.change-item-number
+                        i(class="fa fa-minus" aria-hidden="true")
+                +dropdown("flex-wrap", ["nowrap", "wrap", "wrap-reverse"], "nowrap")
+            #flex-row-align-content.flex-row
+                #flex-container-align-content.flex-container
+                    each number in [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1]
+                        div(class="flex-item-align-content item-" + ((number % 5) + 1))
+                +dropdown("align-content", ["flex-start", "flex-end", "center", "stretch", "space-between", "space-around"], "space-around")
+
+
+
+            //#flex-row-justify
+            //    .flex-fixed-size-container
+            //        #flex-container-justify.flex-container
+            //            each number in [1, 2, 3, 4, 5]
+            //                div(class="flex-item-justify item-" + number, data-number=number)
+            //    +dropdown("flex-justify", ["flex-start", "flex-end", "center", "space-between", "space-around"])
+
+
+
+            //.flex-row
+            //    #flex-container-justify.flex-container
+            //        each number in [1, 2, 3, 4, 5]
+            //            div(class="flex-item item-" + number, data-number=number)
+
+
+
+
+//#controls-container
+//
+//    +dropdown("align-items", ["flex-start", "flex-end", "center", "baseline", "stretch"])
+//    +dropdown("align-content", ["flex-start", "flex-end", "center", "stretch", "space-between", "space-around"])
+//    +dropdown("flex-wrap", ["nowrap", "wrap", "wrap-reverse"])
+//#item-control.item-1
+//    +dropdown("align-self", ["auto", "flex-start", "flex-end", "center", "baseline", "stretch"])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

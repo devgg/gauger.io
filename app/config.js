@@ -13,6 +13,7 @@ config.paths.public = path.join(workingDirectory, 'public');
 config.paths.subpages = path.join(workingDirectory, 'subpages');
 config.paths.bibsbn = path.join(config.paths.subpages, 'bibsbn');
 config.paths.blog = path.join(config.paths.subpages, 'blog');
+config.paths.flex = path.join(config.paths.subpages, 'flex');
 
 config.paths.images = path.join(config.paths.public, 'img');
 config.paths.favicon = path.join(config.paths.images, 'favicon.ico');
